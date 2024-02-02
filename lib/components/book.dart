@@ -25,7 +25,7 @@ class _BooksPageState extends State<BooksPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Books'),
+        title: const Text('Books'),
       ),
       body: GridView.builder(
         gridDelegate:
@@ -50,7 +50,7 @@ class _BooksPageState extends State<BooksPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(books[index].image, width: 100, height: 100),
-                    SizedBox(height: 8.0),
+                    const SizedBox(height: 8.0),
                     Text(books[index].title),
                   ],
                 ),
@@ -87,9 +87,9 @@ class BookPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(book.image),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Text(book.title),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Text(book.author),
           ],
         ),
