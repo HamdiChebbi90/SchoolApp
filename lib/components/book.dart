@@ -14,11 +14,11 @@ class _BooksPageState extends State<BooksPage> {
   void initState() {
     super.initState();
 
-    books.add(Book('Book 1', 'Author 1', 'assets/images/book1.png'));
-    books.add(Book('Book 2', 'Author 2', 'assets/images/book2.png'));
-    books.add(Book('Book 3', 'Author 3', 'assets/images/book3.png'));
-    books.add(Book('Book 4', 'Author 4', 'assets/images/book4.png'));
-    books.add(Book('Book 5', 'Author 5', 'assets/images/book5.png'));
+    books.add(Book('Book 1', 'Author 1', 'assets/images/book1.jpg'));
+    books.add(Book('Book 2', 'Author 2', 'assets/images/book2.jpg'));
+    books.add(Book('Book 3', 'Author 3', 'assets/images/book3.jpg'));
+    books.add(Book('Book 4', 'Author 4', 'assets/images/book4.jpg'));
+    books.add(Book('Book 5', 'Author 5', 'assets/images/book5.jpg'));
   }
 
   @override
@@ -29,7 +29,7 @@ class _BooksPageState extends State<BooksPage> {
       ),
       body: GridView.builder(
         gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemCount: books.length,
         itemBuilder: (context, index) {
           return GestureDetector(
@@ -40,14 +40,20 @@ class _BooksPageState extends State<BooksPage> {
                     builder: (context) => BookPage(book: books[index])),
               );
             },
-            child: Card(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(books[index].image),
-                  SizedBox(height: 8.0),
-                  Text(books[index].title),
-                ],
+            child: Container(
+              width: 100,
+              height: 100,
+              child: Card(
+                shadowColor: Colors.black,
+                color: Colors.blue,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Image.asset(books[index].image, width: 100, height: 100),
+                    SizedBox(height: 8.0),
+                    Text(books[index].title),
+                  ],
+                ),
               ),
             ),
           );

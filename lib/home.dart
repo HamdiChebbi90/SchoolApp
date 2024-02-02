@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:project/components/book.dart';
+import 'package:project/components/events.dart';
 import 'package:project/components/quiz.dart';
 import 'package:project/components/subject.dart';
+import 'package:project/data/quizdata.dart';
+// import 'package:project/data/quizdata.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,47 +15,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _titleController = TextEditingController();
-  final _quiz = Quiz(title: 'title', questions: [
-    Question(question: 'What is the capital of France?', answers: [
-      Answer(text: 'New York', isCorrect: false),
-      Answer(text: 'London', isCorrect: false),
-      Answer(text: 'Paris', isCorrect: true),
-      Answer(text: 'Dublin', isCorrect: false),
-    ]),
-    Question(question: 'Who is CEO of Tesla?', answers: [
-      Answer(text: 'Jeff Bezos', isCorrect: false),
-      Answer(text: 'Elon Musk', isCorrect: true),
-      Answer(text: 'Bill Gates', isCorrect: false),
-      Answer(text: 'Tony Stark', isCorrect: false),
-    ]),
-    Question(question: 'The iPhone was created by which company?', answers: [
-      Answer(text: 'Apple', isCorrect: true),
-      Answer(text: 'Intel', isCorrect: false),
-      Answer(text: 'Amazon', isCorrect: false),
-      Answer(text: 'Microsoft', isCorrect: false),
-    ]),
-    Question(question: 'How many Harry Potter books are there?', answers: [
-      Answer(text: '1', isCorrect: false),
-      Answer(text: '4', isCorrect: false),
-      Answer(text: '6', isCorrect: false),
-      Answer(text: '7', isCorrect: true),
-    ]),
-    Question(question: 'How many sides does a triangle have?', answers: [
-      Answer(text: '3', isCorrect: true),
-      Answer(text: '4', isCorrect: false),
-      Answer(text: '5', isCorrect: false),
-      Answer(text: '6', isCorrect: false),
-    ]),
-  ]);
   List<Item> items = [];
 
   @override
   void initState() {
     super.initState();
 
-    items.add(Item('Subjects', '/images/subject.jpg'));
-    items.add(Item('Quizzes', '/images/quiz.jpg'));
-    items.add(Item('Books', '/images/books.jpg'));
+    items.add(Item('Subjects', 'assets/images/subject.jpg'));
+    items.add(Item('Quizzes', 'assets/images/quiz.jpg'));
+    items.add(Item('Books', 'assets/images/books.jpg'));
+    items.add(Item('Events', 'assets/images/events.jpg'));
   }
 
   @override
@@ -64,6 +36,11 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         children: [
           Expanded(
+            flex: 1,
+            child: SizedBox(height: 10),
+          ),
+          Expanded(
+            flex: 10,
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2),
@@ -85,36 +62,49 @@ class _HomePageState extends State<HomePage> {
                       );
                     } else if (items[index].title == 'Quizzes') {
                       Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => QuizPage(
+                                    quiz: quizzes[0],
+                                  )));
+                    } else if (items[index].title == 'Events') {
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => QuizPage(quiz: _quiz)),
+                            builder: (context) => const EventPage()),
                       );
                     }
                   },
-                  child: Card(
-                    color: Colors.white,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          items[index].image,
-                          width: 300,
-                          height: 300,
-                          alignment: Alignment.center,
-                        ),
-                        const SizedBox(
-                          height: 8.0,
-                        ),
-                        Text(
-                          items[index].title,
-                          style: const TextStyle(
-                            fontSize: 24,
-                            fontFamily: 'RobotoMono',
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(131, 0, 0, 0),
+                  child: Container(
+                    width: 250,
+                    height: 250,
+                    margin: EdgeInsets.only(bottom: 10),
+                    child: Card(
+                      shadowColor: Colors.black,
+                      color: Colors.white,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            items[index].image,
+                            width: 100,
+                            height: 100,
+                            alignment: Alignment.center,
                           ),
-                        )
-                      ],
+                          const SizedBox(
+                            height: 8.0,
+                          ),
+                          Text(
+                            items[index].title,
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontFamily: 'RobotoMono',
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(131, 0, 0, 0),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 );

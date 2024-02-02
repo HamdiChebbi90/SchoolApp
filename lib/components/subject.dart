@@ -15,11 +15,11 @@ class _SubjectPageState extends State<SubjectPage> {
   void initState() {
     super.initState();
 
-    subjects.add(Subject('Math', '/images/math.jpg'));
-    subjects.add(Subject('Science', '/images/science.jpg'));
-    subjects.add(Subject('History', '/images/history.jpg'));
-    subjects.add(Subject('Geography', '/images/geography.jpg'));
-    subjects.add(Subject('English', '/images/english.jpg'));
+    subjects.add(Subject('Math', 'assets/images/math.jpg'));
+    subjects.add(Subject('Science', 'assets/images/science.jpg'));
+    subjects.add(Subject('History', 'assets/images/history.jpg'));
+    subjects.add(Subject('Geography', 'assets/images/geography.jpg'));
+    subjects.add(Subject('English', 'assets/images/english.jpg'));
   }
 
   @override
@@ -48,8 +48,8 @@ class _SubjectPageState extends State<SubjectPage> {
                 children: [
                   Image.asset(
                     subjects[index].image,
-                    width: 350,
-                    height: 300,
+                    width: 100,
+                    height: 100,
                     alignment: Alignment.center,
                   ),
                   const SizedBox(
