@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:project/components/quiz.dart';
+import 'package:project/data/quizdata.dart';
 
 class SubjectPage extends StatefulWidget {
   const SubjectPage({Key? key}) : super(key: key);
@@ -15,31 +17,45 @@ class _SubjectPageState extends State<SubjectPage> {
   void initState() {
     super.initState();
 
-    subjects.add(Subject('Math', 'assets/images/math.jpg'));
-    subjects.add(Subject('Science', 'assets/images/science.jpg'));
-    subjects.add(Subject('History', 'assets/images/history.jpg'));
-    subjects.add(Subject('Geography', 'assets/images/geography.jpg'));
-    subjects.add(Subject('English', 'assets/images/english.jpg'));
+    // subjects.add(Subject('Math', 'assets/images/math.jpg'));
+    // subjects.add(Subject('Science', 'assets/images/science.jpg'));
+    // subjects.add(Subject('History', 'assets/images/history.jpg'));
+    // subjects.add(Subject('Geography', 'assets/images/geography.jpg'));
+    // subjects.add(Subject('English', 'assets/images/english.jpg'));
+    subjects.add(Subject(
+        '2022مناظرة القبول بالسنة الأولى بالمعھد الأعلى للمحاماة',
+        'assets/images/nad.jpg'));
+    subjects.add(Subject(
+        '2021مناظرة القبول بالسنة الأولى بالمعھد الأعلى للمحاماة',
+        'assets/images/a2.jpg'));
+    subjects.add(Subject(
+        '2020مناظرة القبول بالسنة الأولى بالمعھد الأعلى للمحاماة',
+        'assets/images/a3.jpg'));
+    subjects.add(Subject(
+        '2019مناظرة القبول بالسنة الأولى بالمعھد الأعلى للمحاماة',
+        'assets/images/a4.jpg'));
+    subjects.add(Subject(
+        '2018مناظرة القبول بالسنة الأولى بالمعھد الأعلى للمحاماة',
+        'assets/images/a.jpg'));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Subjects'),
+        title: const Text('Concours Avocats'),
       ),
-      body: GridView.builder(
-        gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+      body: ListView.builder(
         itemCount: subjects.length,
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
               Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => InfoPage(subject: subjects[index])),
-              );
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => QuizPage(
+                            quiz: quizzes[0],
+                          )));
             },
             child: Card(
               color: Colors.white,

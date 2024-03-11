@@ -21,10 +21,14 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
 
-    items.add(Item('Subjects', 'assets/images/subject.jpg'));
-    items.add(Item('Quizzes', 'assets/images/quiz.jpg'));
-    items.add(Item('Books', 'assets/images/books.jpg'));
-    items.add(Item('Events', 'assets/images/events.jpg'));
+    // items.add(Item('Subjects', 'assets/images/subject.jpg'));
+    // items.add(Item('Quizzes', 'assets/images/quiz.jpg'));
+    // items.add(Item('Books', 'assets/images/books.jpg'));
+    // items.add(Item('Events', 'assets/images/events.jpg'));
+    items.add(Item('QCM', 'assets/images/qcm.png'));
+    items.add(Item('Fiches de révision', 'assets/images/rev.jpg'));
+    items.add(Item('Exercice corrigé', 'assets/images/ex.jpg'));
+    items.add(Item('Videos', 'assets/images/vid.jpg'));
   }
 
   @override
@@ -48,26 +52,33 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
-                    if (items[index].title == 'Subjects') {
+                    // if (items[index].title == 'Subjects')
+                    if (items[index].title == 'QCM') {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const SubjectPage()),
                       );
-                    } else if (items[index].title == 'Books') {
+                    }
+                    //  else if (items[index].title == 'Books')
+                    else if (items[index].title == 'Fiches de révision') {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const BooksPage()),
                       );
-                    } else if (items[index].title == 'Quizzes') {
+                    }
+                    // else if (items[index].title == 'Quizzes')
+                    else if (items[index].title == 'Exercice corrigé') {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => QuizPage(
                                     quiz: quizzes[0],
                                   )));
-                    } else if (items[index].title == 'Events') {
+                    }
+                    // else if (items[index].title == 'Events')
+                    else if (items[index].title == 'Videos') {
                       Navigator.push(
                         context,
                         MaterialPageRoute(

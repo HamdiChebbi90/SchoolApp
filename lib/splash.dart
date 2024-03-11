@@ -15,6 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, '/SignInPage');
+      // Navigator.pushReplacementNamed(context, '/HomePage');
     });
   }
 
@@ -23,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Image.asset('assets/images/logo.png'),
+        child: Image.asset('assets/images/ahmed.png'),
       ),
     );
   }
